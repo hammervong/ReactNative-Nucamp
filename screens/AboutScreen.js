@@ -1,34 +1,10 @@
-
-import { useState } from "react";
-import { ScrollView, Text } from "react-native";
-import { PARTNERS } from "./../shared/partners";
-import { Avatar, Card, ListItem } from "react-native-elements";
-
-const AboutScreen = () => {
-  const [partners, setpartners] = useState(PARTNERS);
-  return (
-    <ScrollView>
-      <Mission />
-      <Card>
-        <Card.Title>Community Partners</Card.Title>
-        <Card.Divider />
-        {partners.map((partner) => (
-          <ListItem key={partner.id}>
-            <Avatar source={partner.image} rounded />
-            <ListItem.Content>
-              <ListItem.Title>{partner.name}</ListItem.Title>
-              <ListItem.Subtitle>{partner.description}</ListItem.Subtitle>
-            </ListItem.Content>
-          </ListItem>
-        ))}
-      </Card>
-    </ScrollView>
-  );
-};
+import { ScrollView, Text } from 'react-native';
+import { PARTNERS } from './../shared/partners';
+import { Avatar, Card, ListItem } from 'react-native-elements';
+import { useState } from 'react';
 
 const Mission = () => {
   return (
-    <ScrollView>
       <Card>
         <Card.Title>Our Mission</Card.Title>
         <Card.Divider />
@@ -41,6 +17,30 @@ const Mission = () => {
           We also present a platform for campers to share reviews on campsites
           they have visited with each other.
         </Text>
+      </Card>
+  );
+};
+
+const AboutScreen = () => {
+  const [partners, setpartners] = useState(PARTNERS);
+
+  return (
+    <ScrollView>
+      <Mission />
+      <Card>
+        <Card.Title>Community Partners</Card.Title>
+        <Card.Divider />
+        {partners.map((partner) => (
+          <ListItem key={partner.id}>
+            <Avatar rounded source={partner.image} />
+            <ListItem.Content>
+              <ListItem.Title>{partner.name}</ListItem.Title>
+              <ListItem.Subtitle>
+                {partner.description}
+              </ListItem.Subtitle>
+            </ListItem.Content>
+          </ListItem>
+        ))}
       </Card>
     </ScrollView>
   );
